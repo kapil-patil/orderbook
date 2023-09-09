@@ -1,6 +1,7 @@
 package com.ubs.controller;
 
 import com.ubs.model.OrderModel;
+import com.ubs.service.OrderService;
 import lombok.extern.java.Log;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import static com.ubs.service.OrderService.closeCheck;
 @RestController
 @Log
 public class OrderController {
+
     @GetMapping("/getAllOrders")
     public ResponseEntity<List<OrderModel>> getOrders() {
         log.info("returning order book");
@@ -61,11 +63,15 @@ public class OrderController {
         }
     }
 
-    @PutMapping("/closeOrder")
+    @GetMapping("/closeOrder")
     public ResponseEntity<String> freezingOrder() {
         closeCheck = true;
+        new OrderService().startExecution();
         return new ResponseEntity<>("closing order , new order can not be accepted", HttpStatus.DESTINATION_LOCKED);
-        // TBD execution
+
+    }
+
+    public void execution(){
 
     }
 

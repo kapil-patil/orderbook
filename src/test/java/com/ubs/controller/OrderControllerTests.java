@@ -31,7 +31,7 @@ public class OrderControllerTests {
         orderController = new OrderController();
         orderList = new ArrayList<OrderModel>() {
             {
-                add(new OrderModel("ISIN103", "800", "03-Sep-2023", "Buy", 2400.00));
+                add(new OrderModel("ISIN103", 800.0, "03-Sep-2023", "Buy", 2400.00));
             }
         };
     }
@@ -57,7 +57,7 @@ public class OrderControllerTests {
     public void addOrderTest() {
         try {
             log.info("Starting execution of addOrder");
-            OrderModel od = new OrderModel("ISIN102", "800", "03-Sep-2023", "Buy", 2400.00);
+            OrderModel od = new OrderModel("ISIN102", 800.0, "03-Sep-2023", "Buy", 2400.00);
             ResponseEntity<?> actualValue = orderController.addOrder(orderList.get(0));
             log.info(" Actual Value=" + actualValue);
             Assertions.assertEquals(201, actualValue.getStatusCode().value());
@@ -74,7 +74,7 @@ public class OrderControllerTests {
         try {
             closeCheck = true;
             log.info("Starting execution of addOrder");
-            OrderModel od = new OrderModel("ISIN102", "800", "03-Sep-2023", "Buy", 2400.00);
+            OrderModel od = new OrderModel("ISIN102", 800.0, "03-Sep-2023", "Buy", 2400.00);
             ResponseEntity<?> actualValue = orderController.addOrder(orderList.get(0));
             log.info(" Actual Value=" + actualValue);
             Assertions.assertEquals(451, actualValue.getStatusCode().value());

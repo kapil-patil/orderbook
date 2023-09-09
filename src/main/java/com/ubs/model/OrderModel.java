@@ -7,8 +7,8 @@ import lombok.*;
 public class OrderModel {
 
     private String instrumentId;
-    private String Quantity;
+    private Double Quantity;
     private String bookDate;
     private String type;
-    private double Price;
+    private Double Price;
 }
