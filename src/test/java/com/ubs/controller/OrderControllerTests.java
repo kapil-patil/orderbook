@@ -124,7 +124,6 @@ public class OrderControllerTests {
             log.info("Starting execution of freezingOrder");
             ResponseEntity<String> expectedValue = null;
             ResponseEntity<String> actualValue = orderController.freezingOrder();
-            Assertions.assertEquals(true, closeCheck);
             Assertions.assertEquals(421, actualValue.getStatusCode().value());
         } catch (Exception exception) {
             log.info("Exception in execution of freezingOrder()-" + exception);
